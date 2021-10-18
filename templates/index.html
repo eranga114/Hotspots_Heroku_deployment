@@ -3,8 +3,23 @@
         <title> Practice</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
         <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js">
+        $("#"add_gene"").click(function() {
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js">
+        var textareaContent = $("#symbols").val();
+        var symbols = textareaContent.split("\n");
+        for (var i = 0; i < symbols.length; ++i) {
+        console.log(symbols[i]);
+        $.ajax({
+        url: '/api',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ "symbol": symbols[i] }),
+        dataType: 'json'
+        });
+        }
 
+        </script>
     </head>
     <body>
     <div class="ui container">
@@ -19,26 +34,33 @@
                 <a class="item active">Download</a>
             </div>
             <div class="ui form">
-<form action="/submitform" method="post" class="ui form">
-  <div class="ui form">
-  <div class="three fields">
-    <div class="field">
-      <label>Mutation Position in the Genome</label>
-      <input type="text" name="startPosition" placeholder="Position">
-    </div>
-    <div class="field">
-      <label>Number of mutations</label>
-      <input type="text" name="mut_count" placeholder="Mutation Count">
-    </div>
-    <div class="field">
-      <label>Total mutations in the Gene</label>
-      <input type="text" name="total_mut_count" placeholder="Total Mutations">
-    </div>
-  </div>
-</div>
+        <div class="field">
+            <label><h2>Enter HUGO gene name/s</h2></label>
+            <textarea></textarea>
+        </div>
+    <div>
 
-  <button class="ui primary button" type="submit">Submit</button>
-</form>
+
+        <button id="add_gene" class="ui primary button">Enter</button>
+    </div>
+    <div class="ui modal">
+        <i class="close icon"></i>
+        <div class="header">
+            Add HUGO gene name/s
+        </div>
+        <div class="content">
+            <div class="ui form">
+                <div class="field">
+                    <label>Enter HUGO name/s </label>
+                    <textarea></textarea>
+                </div>
+        </div>
+            <div class="actions">
+                <div class="ui positive right labeled icon button">
+                    Search
+                    <i class="plus icon"></i>
+                </div>
+            </div>
         </div>
     </div>
     </div>
