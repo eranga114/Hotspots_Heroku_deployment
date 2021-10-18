@@ -29,12 +29,13 @@ def hotspots_pred(data: Item):
 
     prediction = rf_pickle.predict( [[startPosition, mut_count, total_mut_count]] )
     if prediction == 1:
-        hotspot = 'Its a cancer hotspot'
+        hotspot = "It's a cancer hotspot"
     else:
-        hotspot = 'Its not a cancer hotspot'
+        hotspot = "It's not a cancer hotspot"
 
     return {
-        "Cancer Hotspot Prediction": hotspot
+        "Cancer Hotspot Prediction": hotspot,
+        "Prediction":prediction
     }
 
 
