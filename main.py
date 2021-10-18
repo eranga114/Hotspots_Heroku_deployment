@@ -34,6 +34,7 @@ def hotspots_pred(data: Item):
         hotspot = "It's not a cancer hotspot"
 
     return {
+        "Prediction":int(prediction),
         "Cancer Hotspot Prediction": hotspot
     }
 
